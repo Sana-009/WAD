@@ -1,0 +1,68 @@
+1. Install Angular CLI:
+   - Open a terminal and run the command: `npm install -g @angular/cli`.
+   - This will install the Angular CLI globally on your system.
+
+2. Create a new Angular project:
+   - Open a terminal and navigate to the desired directory for your project.
+   - Run the command: `ng new angular-app`.
+   - This will create a new Angular project named "angular-app" in a directory called "angular-app".
+
+3. Set up the routing module:
+   - Change to the project directory: `cd angular-app`.
+   - Generate a new routing module: `ng generate module app-routing --flat --module=app`.
+   - Open the `app-routing.module.ts` file and configure the routes as follows:
+     ```typescript
+     import { NgModule } from '@angular/core';
+     import { RouterModule, Routes } from '@angular/router';
+     import { LoginComponent } from './login/login.component';
+     import { RegisterComponent } from './register/register.component';
+     import { ProfileComponent } from './profile/profile.component';
+
+     const routes: Routes = [
+       { path: '', redirectTo: '/login', pathMatch: 'full' },
+       { path: 'login', component: LoginComponent },
+       { path: 'register', component: RegisterComponent },
+       { path: 'profile', component: ProfileComponent }
+     ];
+
+     @NgModule({
+       imports: [RouterModule.forRoot(routes)],
+       exports: [RouterModule]
+     })
+     export class AppRoutingModule { }
+     ```
+
+4. Generate the components:
+   - Open a terminal in the project directory (`angular-app`) and run the following commands:
+     - `ng generate component login`
+     - `ng generate component register`
+     - `ng generate component profile`
+
+5. Implement the register component:
+   - Open the `register.component.html` file and add the necessary form fields for user registration.
+   - Open the `register.component.ts` file and implement the registration logic using Angular's Reactive Forms and an appropriate service.
+
+6. Implement the login component:
+   - Open the `login.component.html` file and add the necessary form fields for user login.
+   - Open the `login.component.ts` file and implement the login logic using Angular's Reactive Forms and an appropriate service.
+
+7. Implement the profile component:
+   - Open the `profile.component.html` file and design the profile page to display user data.
+   - Open the `profile.component.ts` file and implement the necessary logic to fetch and display user data.
+
+8. Configure the navigation:
+   - Open the `app.component.html` file and add the navigation links:
+     ```html
+     <nav>
+       <a routerLink="/login" routerLinkActive="active">Login</a>
+       <a routerLink="/register" routerLinkActive="active">Register</a>
+       <a routerLink="/profile" routerLinkActive="active">Profile</a>
+     </nav>
+     <router-outlet></router-outlet>
+     ```
+
+9. Run the application:
+   - In the terminal, navigate to the project directory (`angular-app`) if you're not already there.
+   - Run the command: `ng serve --open`.
+   - This will start the development server and open the application in your default browser.
+
